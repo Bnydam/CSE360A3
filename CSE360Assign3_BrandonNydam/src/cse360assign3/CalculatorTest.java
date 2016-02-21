@@ -160,7 +160,7 @@ public class CalculatorTest
 	}
 	
 	
-	//Test divide method when dividing by a nonzer integer
+	//Test divide method when dividing by a nonzero integer
 	@Test
 	public void testDivideNonzero()
 	{
@@ -197,11 +197,24 @@ public class CalculatorTest
 	}
 	
 	
-	//Not Currently implemented
+	//Prints the history of actions for the specific Calculator Object
 	@Test
 	public void testGetHistory() 
 	{
-		fail("Not yet implemented");
+		Calculator testCalc = new Calculator();
+		assertTrue((testCalc.getHistory()).equals("0")); //History should just be 0 -the total- at first
+		
+		testCalc.add(5);
+		assertTrue((testCalc.getHistory()).equals("0 + 5")); // add method
+		
+		testCalc.multiply(14);
+		assertTrue((testCalc.getHistory()).equals("0 + 5 * 14")); // multiply method
+		
+		testCalc.divide(2);
+		assertTrue((testCalc.getHistory()).equals("0 + 5 * 14 / 2")); // divide method
+		
+		testCalc.subtract(30);
+		assertTrue((testCalc.getHistory()).equals("0 + 5 * 14 / 2 - 30")); // subtract method
 	}
 
 }
